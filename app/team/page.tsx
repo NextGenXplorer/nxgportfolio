@@ -8,15 +8,20 @@ import { Users, Code2, Zap, Sparkles } from "lucide-react";
 
 export default function TeamPage() {
     // Placeholder for team members - you can add your team here
-    const teamMembers = [
-        // Example structure - add your team members here
-        // {
-        //     name: "Team Member Name",
-        //     role: "Position",
-        //     imgSrc: "/team-member.jpg",
-        //     link: "https://linkedin.com/in/member"
-        // }
-    ];
+    const teamMembers: Array<{
+        name: string;
+        role: string;
+        imgSrc: string;
+        link: string;
+    }> = [
+            // Example structure - add your team members here
+            // {
+            //     name: "Team Member Name",
+            //     role: "Position",
+            //     imgSrc: "/team-member.jpg",
+            //     link: "https://linkedin.com/in/member"
+            // }
+        ];
 
     return (
         <div className="min-h-screen bg-black">
