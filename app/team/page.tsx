@@ -1,8 +1,6 @@
 "use client";
 
 import { Container, Section } from "@/components/ui/Container";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
 import { motion } from "framer-motion";
 import { Users } from "lucide-react";
 import Image from "next/image";
@@ -24,8 +22,6 @@ export default function TeamPage() {
 
     return (
         <div className="min-h-screen bg-black">
-            <Navbar />
-
             {/* Hero Section */}
             <Section className="min-h-[60vh] relative overflow-hidden bg-black flex items-center justify-center pt-32">
                 <div className="absolute inset-0">
@@ -120,8 +116,6 @@ export default function TeamPage() {
                     </div>
                 </Container>
             </Section>
-
-            <Footer />
         </div>
     );
 }

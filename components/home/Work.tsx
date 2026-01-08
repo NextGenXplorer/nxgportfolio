@@ -101,7 +101,7 @@ export function Work() {
                                     </h3>
 
                                     {/* Description */}
-                                    <p className="text-sm text-neutral-400 line-clamp-2 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <p className="text-sm text-neutral-400 line-clamp-2 mb-4">
                                         {project.description}
                                     </p>
 
