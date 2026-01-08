@@ -76,7 +76,7 @@ export function Navbar() {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: "100%" }}
                             transition={{ type: "spring", damping: 20 }}
-                            className="fixed inset-0 z-40 bg-navy-900 flex flex-col items-center justify-center space-y-8 md:hidden"
+                            className="fixed inset-0 z-40 bg-obsidian-950 flex flex-col items-center justify-center space-y-8 md:hidden"
                         >
                             {siteData.nav.map((item) => (
                                 <Link

@@ -53,7 +53,7 @@ export function Hero() {
     }, { scope: containerRef });
 
     return (
-        <Section ref={containerRef} className="min-h-screen relative overflow-hidden bg-[#e0e0e0] p-0 flex flex-col justify-end">
+        <Section ref={containerRef} className="min-h-screen relative overflow-hidden bg-obsidian-950 p-0 flex items-center justify-center">
             {/* Denver Parallax Container */}
             <div className="absolute inset-0 w-full h-full">
                 <div className="relative w-full h-full">
@@ -131,19 +131,19 @@ export function Hero() {
                 </div>
             </div>
 
-            <Container className="relative z-[100] pb-24 hero-content pointer-events-none">
-                <div className="max-w-3xl pointer-events-auto">
-                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg">
+            <Container className="relative z-[100] hero-content pointer-events-none">
+                <div className="max-w-3xl mx-auto text-center pointer-events-auto">
+                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-2xl">
                         NEXTGENX
                     </h1>
-                    <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-xl drop-shadow-md">
+                    <p className="text-lg md:text-2xl text-white/90 mb-8 max-w-xl mx-auto drop-shadow-lg">
                         Crafting universal experiences from the peaks to the streets.
                     </p>
-                    <div className="flex gap-4">
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button variant="shimmer" size="lg" onClick={() => document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })}>
                             Explore Work
                         </Button>
-                        <Button variant="ghost" size="lg" className="text-white hover:bg-white/10" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
+                        <Button variant="ghost" size="lg" className="text-white hover:bg-white/10 border-white/20" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
                             Contact Us
                         </Button>
                     </div>
