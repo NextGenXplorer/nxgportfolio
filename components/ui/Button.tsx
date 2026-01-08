@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
@@ -34,18 +33,14 @@ const buttonVariants = cva(
 
 export interface ButtonProps
     extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-    children?: React.ReactNode;
-}
+    VariantProps<typeof buttonVariants> { }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ({ className, variant, size, children, ...props }, ref) => {
         return (
-            <motion.button
+            <button
                 className={cn(buttonVariants({ variant, size, className }))}
                 ref={ref}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
                 {...props}
             >
                 {/* Text Content */}
@@ -55,7 +50,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 {variant === 'secondary' && (
                     <div className="absolute inset-0 bg-gradient-to-tr from-violet-500/10 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
                 )}
-            </motion.button>
+            </button>
         );
     }
 );
