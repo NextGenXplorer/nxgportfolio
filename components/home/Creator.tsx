@@ -8,7 +8,7 @@ export function Creator() {
     const admins = [
         {
             name: "Manvanth Gowda M",
-            role: "Lead Architect",
+            role: "Co-Founder",
             imgSrc: "/admin-photo.jpg",
             link: "https://www.instagram.com/appu_kannadigaa",
             color: "cyan",
@@ -16,7 +16,7 @@ export function Creator() {
         },
         {
             name: "Mithun Gowda B",
-            role: "System Engineer",
+            role: "Co-Founder",
             imgSrc: "/admin-photo-2.jpg",
             link: "https://mithun50.vercel.app",
             color: "violet",

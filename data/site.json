@@ -18,6 +18,10 @@
       "href": "#creative"
     },
     {
+      "label": "Team",
+      "href": "/team"
+    },
+    {
       "label": "Contact",
       "href": "#contact"
     }
