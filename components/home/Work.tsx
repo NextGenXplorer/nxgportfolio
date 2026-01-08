@@ -13,19 +13,28 @@ export function Work() {
     const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
     return (
-        <Section id="work" className="bg-obsidian-950">
-            <Container>
+        <Section id="work" className="bg-black relative overflow-hidden">
+            {/* Tech Grid Background */}
+            <div className="absolute inset-0">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#8b5cf615_1px,transparent_1px),linear-gradient(to_bottom,#8b5cf615_1px,transparent_1px)] bg-[size:3rem_3rem]" />
+                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-violet-500 to-transparent" />
+            </div>
+
+            <Container className="relative z-10">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16">
                     <div>
+                        <div className="inline-block mb-3 px-3 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10">
+                            <span className="text-cyan-400 font-mono text-xs uppercase tracking-widest">Portfolio</span>
+                        </div>
                         <h2 className="text-3xl sm:text-4xl md:text-6xl font-heading font-bold text-white mb-3 md:mb-4">
                             Selected <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-pink-400 to-cyan-400 text-glow">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500">
                                 Works
                             </span>
                         </h2>
                     </div>
-                    <p className="text-sm md:text-base text-neutral-400 md:text-neutral-500 max-w-sm md:text-right mt-2 md:mt-0 md:pb-2">
+                    <p className="text-sm md:text-base text-neutral-400 max-w-sm md:text-right mt-2 md:mt-0 md:pb-2">
                         A curation of digital products, interactive experiences, and experimental interfaces.
                     </p>
                 </div>
