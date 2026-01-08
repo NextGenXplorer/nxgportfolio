@@ -52,6 +52,10 @@ const config: Config = {
                     "0%, 100%": { backgroundPosition: "0% 50%" },
                     "50%": { backgroundPosition: "100% 50%" },
                 },
+                "scan": {
+                    "0%": { transform: "translateY(-100%)" },
+                    "100%": { transform: "translateY(100vh)" },
+                },
             },
             animation: {
                 spotlight: "spotlight 2s ease .75s 1 forwards",
@@ -59,6 +63,7 @@ const config: Config = {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
                 "gradient-x": "gradient-x 3s ease infinite",
+                "scan": "scan 8s linear infinite",
             },
         },
     },
