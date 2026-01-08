@@ -15,19 +15,20 @@ export function Work() {
     return (
         <Section id="work" className="bg-obsidian-950">
             <Container>
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 px-2">
+                {/* Header */}
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16">
                     <div>
-                        <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
+                        <h2 className="text-3xl sm:text-4xl md:text-6xl font-heading font-bold text-white mb-3 md:mb-4">
                             Selected <br /><span className="text-violet-500 text-glow">Works</span>
                         </h2>
                     </div>
-                    <p className="text-neutral-500 max-w-sm text-right hidden md:block pb-2">
+                    <p className="text-sm md:text-base text-neutral-400 md:text-neutral-500 max-w-sm md:text-right mt-2 md:mt-0 md:pb-2">
                         A curation of digital products, interactive experiences, and experimental interfaces.
                     </p>
                 </div>
 
-                {/* Bento Grid Layout */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[350px]">
+                {/* Mobile-First Grid Layout */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[280px] md:auto-rows-[350px]">
                     {projects.map((project, i) => (
                         <Card
                             key={project.id}
@@ -53,7 +54,7 @@ export function Work() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/60 to-transparent z-10" />
                             </div>
 
-                            <div className="absolute inset-0 p-8 flex flex-col justify-end z-20">
+                            <div className="absolute inset-0 p-5 md:p-8 flex flex-col justify-end z-20">
                                 <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                                     <div className="flex items-center justify-between mb-2">
                                         <div className="flex gap-2">

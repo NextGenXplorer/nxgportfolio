@@ -2,11 +2,11 @@
 
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { motion, HTMLMotionProps } from "framer-motion";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-    "relative inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-violet-500 disabled:pointer-events-none disabled:opacity-50 overflow-hidden",
+    "relative inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 overflow-hidden active:scale-95",
     {
         variants: {
             variant: {
@@ -19,9 +19,9 @@ const buttonVariants = cva(
                 ghost: "text-neutral-400 hover:text-white hover:bg-white/5",
             },
             size: {
-                default: "h-11 px-6 py-2",
-                sm: "h-9 rounded-md px-3",
-                lg: "h-14 rounded-lg px-8 text-base",
+                default: "h-11 px-6 py-2 text-sm",
+                sm: "h-9 px-4 py-2 text-xs",
+                lg: "h-12 md:h-14 px-6 md:px-8 py-3 text-sm md:text-base",
                 icon: "h-10 w-10",
             },
         },
@@ -33,7 +33,7 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-    extends Omit<HTMLMotionProps<"button">, "variant">,
+    extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
     children?: React.ReactNode;
 }
@@ -49,7 +49,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 {...props}
             >
                 {/* Text Content */}
-                <span className="relative z-10 flex items-center gap-2">{children}</span>
+                <span className="relative z-10 flex items-center justify-center gap-2">{children}</span>
 
                 {/* Background Glow for secondary/ghost */}
                 {variant === 'secondary' && (
