@@ -1,0 +1,52 @@
+{
+  "brand": {
+    "name": "NextGenX",
+    "tagline": "The Future of Connected Technology",
+    "description": "NextGenX is a forward-thinking tech brand leveraging AI and modern web technologies to build universal digital experiences."
+  },
+  "nav": [
+    {
+      "label": "About",
+      "href": "#about"
+    },
+    {
+      "label": "Work",
+      "href": "#work"
+    },
+    {
+      "label": "Creative",
+      "href": "#creative"
+    },
+    {
+      "label": "Contact",
+      "href": "#contact"
+    }
+  ],
+  "socials": [
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/nexgenxplorerr",
+      "icon": "Instagram"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://youtube.com/@nexgenxplorer",
+      "icon": "Youtube"
+    },
+    {
+      "platform": "Play Store",
+      "url": "https://play.google.com/store/apps/dev?id=8262374975871504599",
+      "icon": "Gamepad2"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://www.linkedin.com/company/nextgenxplorrers",
+      "icon": "Linkedin"
+    },
+    {
+      "platform": "Email",
+      "url": "mailto:nxgextra@gmail.com",
+      "icon": "Mail"
+    }
+  ]
+}

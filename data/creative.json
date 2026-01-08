@@ -1,0 +1,10 @@
+[
+    {
+        "id": "c_flappy",
+        "type": "Game",
+        "src": "/flappy-bird.png",
+        "alt": "A custom implementation of the classic Flappy Bird game.",
+        "title": "Custom Flappy Bird",
+        "link": "https://github.com/NextGenXplorer/Custom-Flappy-Bird"
+    }
+]

@@ -1,0 +1,66 @@
+[
+    {
+        "id": "gh-2",
+        "title": "NutriGuide",
+        "category": "Health Tech",
+        "description": "An AI integrated diet maintaining app personalized for your health goals.",
+        "tags": [
+            "TypeScript",
+            "AI",
+            "Mobile"
+        ],
+        "image": "/nutriguide.png",
+        "link": "https://github.com/NextGenXplorer/NutriGuideFLU"
+    },
+    {
+        "id": "gh-3",
+        "title": "Reshme Info",
+        "category": "AgriTech",
+        "description": "Specialized application for Sericulturists to manage and optimize yield.",
+        "tags": [
+            "TypeScript",
+            "App",
+            "Utility"
+        ],
+        "image": "/reshme-info.png",
+        "link": "https://github.com/NextGenXplorer/Reshme_Info"
+    },
+    {
+        "id": "gh-4",
+        "title": "NextGenX Hub",
+        "category": "Web Platform",
+        "description": "Centralized hub for managing NextGenX services and integrations.",
+        "tags": [
+            "JavaScript",
+            "Internal",
+            "Dashboard"
+        ],
+        "image": "/nextgenx-hub.png",
+        "link": "https://github.com/NextGenXplorer/nextgenx-hub"
+    },
+    {
+        "id": "gh-5",
+        "title": "CortexFlow",
+        "category": "AI Infrastructure",
+        "description": "Universal MCP Server for AI-to-AI Task Continuation with seamless handoff.",
+        "tags": [
+            "AI",
+            "MCP",
+            "Open Source"
+        ],
+        "image": "/cortexflow.jpg",
+        "link": "https://mithun50.github.io/CortexFlow/"
+    },
+    {
+        "id": "gh-6",
+        "title": "Coffee Connect",
+        "category": "Social App",
+        "description": "Connect with coffee enthusiasts and discover new blends near you.",
+        "tags": [
+            "TypeScript",
+            "Social"
+        ],
+        "image": "/coffee-connect.png",
+        "link": "https://github.com/NextGenXplorer/Coffee_Connect"
+    }
+]
