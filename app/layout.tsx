@@ -9,11 +9,12 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space
 export const metadata: Metadata = {
   title: "NextGenX | Future of Connected Technology",
   description: "NextGenX is a premium tech brand building universal animated experiences.",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 import { Navbar } from "@/components/layout/Navbar";
