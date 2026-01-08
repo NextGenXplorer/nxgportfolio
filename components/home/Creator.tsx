@@ -1,110 +1,59 @@
 "use client";
 import { Container, Section } from "@/components/ui/Container";
-import { HoloCard } from "@/components/ui/HoloCard";
 import { motion } from "framer-motion";
-import { Code2, Zap } from "lucide-react";
+import { Users, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export function Creator() {
-    const admins = [
-        {
-            name: "Manvanth Gowda M",
-            role: "Co-Founder",
-            imgSrc: "/admin-photo.jpg",
-            link: "https://www.instagram.com/appu_kannadigaa",
-            color: "cyan",
-            icon: Code2
-        },
-        {
-            name: "Mithun Gowda B",
-            role: "Co-Founder",
-            imgSrc: "/admin-photo-2.jpg",
-            link: "https://mithun50.vercel.app",
-            color: "violet",
-            icon: Zap
-        }
-    ];
-
     return (
-        <Section id="creator" className="bg-black border-t border-cyan-500/20 relative overflow-hidden">
+        <Section id="team" className="bg-black border-t border-cyan-500/20 relative overflow-hidden py-24">
             {/* Tech Background */}
             <div className="absolute inset-0">
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#0ea5e910_1px,transparent_1px),linear-gradient(to_bottom,#0ea5e910_1px,transparent_1px)] bg-[size:3rem_3rem]" />
-                <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl opacity-50" />
             </div>
 
             <Container className="relative z-10">
-                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center max-w-2xl mx-auto mb-12 md:mb-16"
+                    className="text-center max-w-4xl mx-auto"
                 >
-                    <div className="inline-block mb-4 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm">
-                        <span className="text-cyan-400 font-mono text-xs uppercase tracking-widest">
-                            System Architects
+                    <div className="inline-block mb-6 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm">
+                        <span className="text-cyan-400 font-mono text-xs uppercase tracking-widest flex items-center gap-2">
+                            <Users size={16} />
+                            The Minds Behind NextGenX
                         </span>
                     </div>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white mb-4 md:mb-6 leading-tight">
-                        Crafted with{" "}
+
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-white mb-8 leading-tight">
+                        Meet the{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500">
-                            Passion & Precision
+                            Innovators
                         </span>
                     </h2>
-                    <p className="text-sm sm:text-base md:text-lg text-neutral-400 leading-relaxed px-4">
-                        Meet the creative force driving NextGenX. We are dedicated to pushing the boundaries of what is possible on the web.
+
+                    <p className="text-lg md:text-xl text-neutral-400 leading-relaxed mb-12 max-w-2xl mx-auto">
+                        Get to know the passionate team of developers, designers, and visionaries dedicated to pushing the boundaries of what's possible.
                     </p>
-                </motion.div>
 
-                {/* Admin Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto px-4">
-                    {admins.map((admin, index) => (
-                        <motion.div
-                            key={admin.name}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: index * 0.2 }}
-                            className="flex items-center justify-center"
+                    <Link href="/team">
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-transparent overflow-hidden rounded-full"
                         >
-                            <a
-                                href={admin.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="relative group block w-full max-w-[340px] mx-auto"
-                            >
-                                {/* Outer Container with Padding */}
-                                <div className="relative p-4">
-                                    {/* Tech Glow */}
-                                    <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[380px] md:h-[380px] bg-${admin.color}-500/20 rounded-full blur-[100px] pointer-events-none group-hover:bg-${admin.color}-500/30 transition-colors duration-700`} />
+                            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-violet-500 opacity-20 group-hover:opacity-30 transition-opacity" />
+                            <div className="absolute inset-0 border border-cyan-500/50 rounded-full group-hover:border-cyan-400 transition-colors" />
 
-                                    {/* Corner Brackets - Larger */}
-                                    <div className={`absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-${admin.color}-500/50 transition-all duration-300 group-hover:border-${admin.color}-500`} />
-                                    <div className={`absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-${admin.color}-500/50 transition-all duration-300 group-hover:border-${admin.color}-500`} />
-                                    <div className={`absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-${admin.color}-500/50 transition-all duration-300 group-hover:border-${admin.color}-500`} />
-                                    <div className={`absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-${admin.color}-500/50 transition-all duration-300 group-hover:border-${admin.color}-500`} />
-
-                                    {/* Icon Badge */}
-                                    <div className={`absolute -top-3 left-1/2 -translate-x-1/2 z-30 px-4 py-2 rounded-full border-2 border-${admin.color}-500/50 bg-black group-hover:border-${admin.color}-500 transition-all duration-300`}>
-                                        <admin.icon size={20} className={`text-${admin.color}-400`} />
-                                    </div>
-
-                                    {/* HoloCard */}
-                                    <HoloCard
-                                        name={admin.name}
-                                        role={admin.role}
-                                        imgSrc={admin.imgSrc}
-                                        className={`z-10 border-2 border-${admin.color}-500/30 shadow-[0_0_40px_-10px_rgba(6,182,212,0.4)] group-hover:shadow-[0_0_60px_-5px_rgba(6,182,212,0.6)] transition-all duration-500`}
-                                    />
-
-                                    {/* Scan Line */}
-                                    <div className={`absolute inset-0 bg-gradient-to-b from-transparent via-${admin.color}-500/20 to-transparent h-full opacity-0 group-hover:opacity-100 group-hover:translate-y-full transition-all duration-1000 pointer-events-none`} />
-                                </div>
-                            </a>
-                        </motion.div>
-                    ))}
-                </div>
+                            <span className="relative font-heading font-bold text-white group-hover:text-cyan-100 transition-colors">
+                                Meet the Team
+                            </span>
+                            <ArrowRight className="relative w-5 h-5 text-cyan-400 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                        </motion.button>
+                    </Link>
+                </motion.div>
             </Container>
         </Section>
     );
