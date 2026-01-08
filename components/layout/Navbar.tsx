@@ -29,9 +29,15 @@ export function Navbar() {
 
     const handleNavClick = (href: string) => {
         if (href.startsWith('#')) {
-            const element = document.querySelector(href);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // If we're on the home page, scroll directly
+            if (pathname === '/') {
+                const element = document.querySelector(href);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            } else {
+                // If we're on another page, navigate to home with hash
+                window.location.href = `/${href}`;
             }
         }
     };
