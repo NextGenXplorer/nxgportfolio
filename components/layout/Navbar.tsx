@@ -27,17 +27,14 @@ export function Navbar() {
         setIsOpen(false);
     }, [pathname]);
 
-    const handleNavClick = (href: string) => {
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         if (href.startsWith('#')) {
-            // If we're on the home page, scroll directly
             if (pathname === '/') {
+                e.preventDefault();
                 const element = document.querySelector(href);
                 if (element) {
                     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-            } else {
-                // If we're on another page, navigate to home with hash
-                window.location.href = `/${href}`;
             }
         }
     };
@@ -83,25 +80,13 @@ export function Navbar() {
                 <nav className="hidden md:flex items-center gap-1">
                     {siteData.nav.map((item) => {
                         const isHashLink = item.href.startsWith('#');
-
-                        if (isHashLink) {
-                            return (
-                                <button
-                                    key={item.label}
-                                    onClick={() => handleNavClick(item.href)}
-                                    className="relative px-4 py-2 text-sm font-medium text-neutral-400 hover:text-cyan-400 transition-colors group"
-                                >
-                                    <span className="relative z-10">{item.label}</span>
-                                    <div className="absolute inset-0 bg-cyan-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-                                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-violet-500 group-hover:w-full transition-all duration-300" />
-                                </button>
-                            );
-                        }
+                        const linkHref = isHashLink && pathname !== '/' ? `/${item.href}` : item.href;
 
                         return (
                             <Link
                                 key={item.label}
-                                href={item.href}
+                                href={linkHref}
+                                onClick={(e) => handleNavClick(e, item.href)}
                                 className="relative px-4 py-2 text-sm font-medium text-neutral-400 hover:text-cyan-400 transition-colors group"
                             >
                                 <span className="relative z-10">{item.label}</span>
@@ -112,8 +97,9 @@ export function Navbar() {
                     })}
 
                     {/* CTA Button */}
-                    <button
-                        onClick={() => handleNavClick('#contact')}
+                    <Link
+                        href={pathname === '/' ? '#contact' : '/#contact'}
+                        onClick={(e) => handleNavClick(e, '#contact')}
                         className="ml-4 px-5 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-sm font-bold hover:shadow-[0_0_30px_-5px_rgba(6,182,212,0.6)] transition-all duration-300 relative overflow-hidden group"
                     >
                         <span className="relative z-10 flex items-center gap-2">
@@ -121,7 +107,7 @@ export function Navbar() {
                             Contact
                         </span>
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-                    </button>
+                    </Link>
                 </nav>
 
                 {/* Mobile Menu Toggle */}
@@ -155,32 +141,20 @@ export function Navbar() {
                             >
                                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#0ea5e910_1px,transparent_1px),linear-gradient(to_bottom,#0ea5e910_1px,transparent_1px)] bg-[size:2rem_2rem]" />
 
+                                {/* Content */}
                                 <div className="relative z-10 flex flex-col p-6 pt-24 space-y-2">
                                     {siteData.nav.map((item) => {
                                         const isHashLink = item.href.startsWith('#');
-
-                                        if (isHashLink) {
-                                            return (
-                                                <button
-                                                    key={item.label}
-                                                    onClick={() => {
-                                                        handleNavClick(item.href);
-                                                        setIsOpen(false);
-                                                    }}
-                                                    className="relative px-4 py-3 text-lg font-heading font-medium text-white hover:text-cyan-400 transition-colors group rounded-lg text-left"
-                                                >
-                                                    <span className="relative z-10">{item.label}</span>
-                                                    <div className="absolute inset-0 bg-cyan-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-                                                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0 h-0 bg-cyan-500 group-hover:w-1 group-hover:h-full transition-all duration-300 rounded-r" />
-                                                </button>
-                                            );
-                                        }
+                                        const linkHref = isHashLink && pathname !== '/' ? `/${item.href}` : item.href;
 
                                         return (
                                             <Link
                                                 key={item.label}
-                                                href={item.href}
-                                                onClick={() => setIsOpen(false)}
+                                                href={linkHref}
+                                                onClick={(e) => {
+                                                    setIsOpen(false);
+                                                    handleNavClick(e, item.href);
+                                                }}
                                                 className="relative px-4 py-3 text-lg font-heading font-medium text-white hover:text-cyan-400 transition-colors group rounded-lg"
                                             >
                                                 <span className="relative z-10">{item.label}</span>
@@ -190,10 +164,12 @@ export function Navbar() {
                                         );
                                     })}
 
-                                    <button
-                                        onClick={() => {
-                                            handleNavClick('#contact');
+                                    {/* Mobile CTA */}
+                                    <Link
+                                        href={pathname === '/' ? '#contact' : '/#contact'}
+                                        onClick={(e) => {
                                             setIsOpen(false);
+                                            handleNavClick(e, '#contact');
                                         }}
                                         className="mt-4 px-5 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-violet-500 text-white text-center font-bold shadow-[0_0_30px_-5px_rgba(6,182,212,0.6)] relative overflow-hidden group"
                                     >
@@ -202,7 +178,7 @@ export function Navbar() {
                                             Get in Touch
                                         </span>
                                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-                                    </button>
+                                    </Link>
                                 </div>
                             </motion.div>
                         </>
