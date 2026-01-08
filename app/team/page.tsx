@@ -1,3 +1,5 @@
+"use client";
+
 import { Container, Section } from "@/components/ui/Container";
 import { motion } from "framer-motion";
 import { Users, Code2, Zap } from "lucide-react";
