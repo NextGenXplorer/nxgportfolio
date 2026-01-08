@@ -5,7 +5,7 @@ import projects from "@/data/projects.json";
 import { Container, Section } from "@/components/ui/Container";
 import { Modal } from "@/components/ui/Modal";
 import { Button } from "@/components/ui/Button";
-import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function Work() {
@@ -142,18 +142,14 @@ export function Work() {
                                 ))}
                             </div>
                             <div className="flex gap-4">
-                                {selectedProject.links.live && (
-                                    <Button variant="shimmer" size="lg" onClick={() => window.open(selectedProject.links.live, '_blank')}>
-                                        <ExternalLink size={18} className="mr-2" />
-                                        Live Demo
-                                    </Button>
-                                )}
-                                {selectedProject.links.github && (
-                                    <Button variant="ghost" size="lg" className="border-cyan-500/30 text-cyan-400" onClick={() => window.open(selectedProject.links.github, '_blank')}>
-                                        <Github size={18} className="mr-2" />
-                                        Source Code
-                                    </Button>
-                                )}
+                                <Button
+                                    variant="shimmer"
+                                    size="lg"
+                                    onClick={() => window.open(selectedProject.link, '_blank')}
+                                >
+                                    <ExternalLink size={18} className="mr-2" />
+                                    View Project
+                                </Button>
                             </div>
                         </div>
                     </div>
