@@ -19,7 +19,10 @@ export function Work() {
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16">
                     <div>
                         <h2 className="text-3xl sm:text-4xl md:text-6xl font-heading font-bold text-white mb-3 md:mb-4">
-                            Selected <br /><span className="text-violet-500 text-glow">Works</span>
+                            Selected <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-pink-400 to-cyan-400 text-glow">
+                                Works
+                            </span>
                         </h2>
                     </div>
                     <p className="text-sm md:text-base text-neutral-400 md:text-neutral-500 max-w-sm md:text-right mt-2 md:mt-0 md:pb-2">
