@@ -21,7 +21,7 @@ export default function TeamPage() {
             role: "Co-Founder",
             imgSrc: "/admin-photo-2.jpg",
             link: "https://mithun50.vercel.app",
-            color: "violet",
+            color: "cyan",
             icon: Zap
         }
     ];
