@@ -12,7 +12,7 @@ export default function TeamPage() {
             name: "Manvanth Gowda M",
             role: "Co-Founder",
             imgSrc: "/admin-photo.jpg",
-            link: "https://www.instagram.com/appu_kannadigaa",
+            link: "https://manvanth.vercel.app/",
             color: "cyan",
             icon: Code2
         },
