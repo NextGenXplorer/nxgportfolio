@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter, usePathname } from "next/navigation";
+import Image from "next/image";
 import { Component as CircularMenu, CommandItem } from "@/components/ui/circular-command-menu";
 import { Info, Briefcase, Palette, Users, Mail, Home } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -64,11 +65,11 @@ export function Navbar() {
 
     return (
         <>
-            <motion.header 
-                style={{ 
-                    backgroundColor: headerBg, 
+            <motion.header
+                style={{
+                    backgroundColor: headerBg,
                     backdropFilter: headerBlur,
-                    borderBottomColor: headerBorder 
+                    borderBottomColor: headerBorder
                 }}
                 className="fixed top-0 w-full z-40 py-4 px-6 border-b border-transparent transition-colors duration-300"
             >
@@ -79,10 +80,14 @@ export function Navbar() {
                     >
                         <div className="relative w-10 h-10 flex items-center justify-center">
                             <div className="absolute inset-0 bg-orange-500/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                            <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-600 p-[1px]">
-                                <div className="w-full h-full bg-black rounded-[7px] flex items-center justify-center overflow-hidden">
-                                    <span className="text-white font-heading font-black text-sm">X</span>
-                                </div>
+                            <div className="relative w-8 h-8 rounded-lg overflow-hidden">
+                                <Image
+                                    src="/logo.png"
+                                    alt="NextGenX Logo"
+                                    fill
+                                    className="object-contain"
+                                    priority
+                                />
                             </div>
                         </div>
 

@@ -1,14 +1,15 @@
 "use client";
 
 import { ArrowUp, Instagram, Youtube, Gamepad2, Linkedin, Mail } from "lucide-react";
+import Image from "next/image";
 import siteData from "@/data/site.json";
 import { Container } from "@/components/ui/Container";
 import { motion } from "framer-motion";
 
 export function Footer() {
     const scrollToTop = () => {
-        window.scrollTo({ 
-            top: 0, 
+        window.scrollTo({
+            top: 0,
             behavior: "smooth"
         });
     };
@@ -17,15 +18,18 @@ export function Footer() {
         <footer className="bg-black border-t border-orange-600/20 py-24 relative overflow-hidden">
             {/* Premium Orange Accent */}
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-orange-500/50 to-transparent blur-sm" />
-            
+
             <Container>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
                     <div className="col-span-1 lg:col-span-2">
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-600 p-[1px]">
-                                <div className="w-full h-full bg-black rounded-[7px] flex items-center justify-center">
-                                    <span className="text-white font-heading font-black text-xs">X</span>
-                                </div>
+                            <div className="relative w-8 h-8 rounded-lg overflow-hidden">
+                                <Image
+                                    src="/logo.png"
+                                    alt="NextGenX Logo"
+                                    fill
+                                    className="object-contain"
+                                />
                             </div>
                             <span className="font-heading text-2xl font-bold tracking-tighter text-white">
                                 NEXTGEN<span className="text-orange-400">X</span>
@@ -49,7 +53,7 @@ export function Footer() {
                         <h4 className="text-white font-mono text-xs uppercase tracking-[0.3em] mb-6">Connect</h4>
                         <div className="flex gap-4">
                             {siteData.socials.map((social, index) => (
-                                <SocialLink 
+                                <SocialLink
                                     key={index}
                                     icon={getSocialIcon(social.icon)}
                                     href={social.url}
@@ -63,7 +67,7 @@ export function Footer() {
                     <p className="text-gray-600 text-xs font-mono uppercase tracking-widest">
                         © {new Date().getFullYear()} {siteData.brand.name}. FORGED IN ENERGY.
                     </p>
-                    
+
                     <button
                         onClick={scrollToTop}
                         className="group flex items-center gap-3 text-white/40 hover:text-orange-400 transition-colors"
@@ -81,8 +85,8 @@ export function Footer() {
 
 function SocialLink({ icon, href }: { icon: React.ReactNode, href: string }) {
     return (
-        <a 
-            href={href} 
+        <a
+            href={href}
             target={href.startsWith('http') ? '_blank' : '_self'}
             rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
             className="w-12 h-12 rounded-xl bg-gray-900/50 border border-gray-700/50 flex items-center justify-center text-white/50 hover:text-orange-400 hover:border-orange-500/30 transition-all group"
