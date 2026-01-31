@@ -116,9 +116,9 @@ export function Navbar() {
             <div className="fixed bottom-8 right-8 z-[100] md:hidden">
                 <CircularMenu
                     items={navItems}
-                    radius={120}
-                    startAngle={180}
-                    endAngle={270}
+                    radius={150}
+                    startAngle={170}
+                    endAngle={280}
                 />
             </div>
         </>
