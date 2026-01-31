@@ -113,7 +113,7 @@ export function Navbar() {
             </motion.header>
 
             {/* Bottom Right Navigation for Mobile/Interactive */}
-            <div className="fixed bottom-8 right-8 z-50 md:hidden">
+            <div className="fixed bottom-8 right-8 z-[100] md:hidden">
                 <CircularMenu
                     items={navItems}
                     radius={120}

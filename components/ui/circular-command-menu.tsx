@@ -92,10 +92,10 @@ function Component({
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
                 className={cn(
-                    "relative z-50 flex h-14 w-14 items-center justify-center rounded-full",
-                    "bg-white text-black shadow-[0_0_30px_-5px_rgba(255,255,255,0.4)]",
-                    "hover:scale-110 transition-transform",
-                    "focus:outline-none focus:ring-2 focus:ring-neon-cyan focus:ring-offset-2 focus:ring-offset-black",
+                    "relative z-[100] flex h-14 w-14 items-center justify-center rounded-full",
+                    "bg-black border border-white/10 text-white shadow-[0_0_30px_-5px_rgba(255,140,0,0.4)]",
+                    "hover:scale-110 hover:border-orange-500/50 transition-all duration-300",
+                    "focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-black",
                 )}
                 whileTap={{ scale: 0.9 }}
                 aria-expanded={isOpen}
@@ -120,7 +120,7 @@ function Component({
                 </motion.div>
                 {/* Pulse Ring */}
                 {!isOpen && (
-                    <div className="absolute inset-0 rounded-full bg-white/20 animate-ping pointer-events-none" />
+                    <div className="absolute inset-0 rounded-full bg-orange-500/20 animate-ping pointer-events-none" />
                 )}
             </motion.button>
 
@@ -140,7 +140,7 @@ function Component({
             {/* Menu Items */}
             <AnimatePresence>
                 {isOpen && itemCount > 0 && (
-                    <div className="absolute left-1/2 top-1/2 z-50" role="menu">
+                    <div className="absolute left-1/2 top-1/2 z-[100]" role="menu">
                         {safeItems.map((item, index) => {
                             const position = getItemPosition(index)
                             const isActive = activeIndex === index
@@ -170,9 +170,9 @@ function Component({
                                     onMouseEnter={() => setActiveIndex(index)}
                                     className={cn(
                                         "absolute flex h-14 w-14 items-center justify-center rounded-full",
-                                        "border border-white/10 bg-obsidian-900 shadow-2xl",
-                                        "transition-all hover:bg-white/10 text-white",
-                                        isActive && "ring-2 ring-neon-cyan bg-white/10 scale-110",
+                                        "border border-white/10 bg-black shadow-2xl shadow-black/50",
+                                        "transition-all hover:bg-white/5 hover:border-orange-500/30 text-white",
+                                        isActive && "ring-2 ring-orange-500 bg-white/5 scale-110 shadow-orange-500/20",
                                     )}
                                     role="menuitem"
                                     aria-label={item.label}
@@ -187,7 +187,7 @@ function Component({
                                             scale: isActive ? 1 : 0.9,
                                             x: isActive ? 0 : 10,
                                         }}
-                                        className="absolute right-full mr-4 whitespace-nowrap rounded-lg bg-black/80 backdrop-blur-md px-4 py-2 text-xs font-mono uppercase tracking-widest text-neon-cyan shadow-xl border border-white/10"
+                                        className="absolute right-full mr-4 whitespace-nowrap rounded-lg bg-black/90 backdrop-blur-md px-4 py-2 text-xs font-mono uppercase tracking-widest text-orange-400 shadow-xl border border-orange-500/20"
                                     >
                                         <span>{item.label}</span>
                                     </motion.div>
