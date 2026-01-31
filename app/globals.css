@@ -23,6 +23,7 @@
 }
 
 @layer utilities {
+
   /* Premium Black and Orange Utilities */
   .orange-gradient {
     background: linear-gradient(135deg, #FF8C00 0%, #FFA500 50%, #FFB347 100%);
@@ -100,12 +101,14 @@
   }
 
   .glass-premium {
-    @apply bg-black/60 backdrop-blur-2xl border border-orange-600/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)];
+    @apply bg-black/60 backdrop-blur-2xl border border-orange-600/20 shadow-[0_8px_32px_0_rgba(0, 0, 0, 0.8)] optimize-animation;
     background-image: linear-gradient(135deg, rgba(255, 140, 0, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
+    will-change: transform, opacity;
   }
 
   .glass-card {
-    @apply bg-black/40 backdrop-blur-lg border border-orange-800/30 transition-all duration-500;
+    @apply bg-black/40 backdrop-blur-lg border border-orange-800/30 transition-all duration-500 optimize-animation;
+    will-change: transform, opacity;
     box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.6);
   }
 

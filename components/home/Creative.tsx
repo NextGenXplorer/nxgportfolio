@@ -20,7 +20,7 @@ export function Creative() {
         <Section id="creative" className="bg-black py-32 relative overflow-hidden" ref={sectionRef}>
             {/* Background Texture */}
             <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-orange-900/5 to-transparent" />
-            
+
             <Container>
                 <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
                     <div className="max-w-2xl">
@@ -59,19 +59,20 @@ function CreativeCard({ item }: { item: any }) {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="group relative rounded-3xl overflow-hidden bg-black border border-white/5 shadow-2xl"
+            className="group relative rounded-3xl overflow-hidden bg-black border border-white/5 shadow-2xl transform-gpu will-change-transform"
         >
             <div className="aspect-[3/4] relative overflow-hidden">
                 <Image
                     src={creativeImage(item.src)}
                     alt={item.title}
                     fill
-                    className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-60 group-hover:opacity-100"
+                    className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-60 group-hover:opacity-100 will-change-transform"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                
+
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-                
+
                 {/* Interaction Indicator */}
                 <div className="absolute top-6 right-6 p-3 rounded-full bg-black/40 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-500 scale-50 group-hover:scale-100">
                     <ArrowUpRight size={18} className="text-white" />
