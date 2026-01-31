@@ -2,9 +2,10 @@
 
 import { Container, Section } from "@/components/ui/Container";
 import { motion } from "framer-motion";
-import { Users, Code2, Zap } from "lucide-react";
-import Image from "next/image";
+import { Users, Code2, Zap, ArrowLeft } from "lucide-react";
+import Link from "next/link";
 import { HoloCard } from "@/components/ui/HoloCard";
+import { slideUp, staggerContainer, fadeIn } from "@/lib/animations";
 
 export default function TeamPage() {
     const admins = [
@@ -12,8 +13,8 @@ export default function TeamPage() {
             name: "Manvanth Gowda M",
             role: "Co-Founder",
             imgSrc: "/admin-photo.jpg",
-            link: "https://manvanth.vercel.app/",
-            color: "cyan",
+            link: "https://manvanthgowdam.vercel.app",
+            color: "neon-cyan",
             icon: Code2
         },
         {
@@ -21,108 +22,94 @@ export default function TeamPage() {
             role: "Co-Founder",
             imgSrc: "/admin-photo-2.jpg",
             link: "https://mithun50.vercel.app",
-            color: "cyan",
+            color: "neon-cyan",
             icon: Zap
         }
     ];
 
-    const teamMembers: Array<{
-        name: string;
-        role: string;
-        imgSrc: string;
-        link: string;
-        color: string;
-        icon: any;
-    }> = [
-            {
-                name: "Nevil Anson Dsouza",
-                role: "Team Member",
-                imgSrc: "/nevil-photo.jpg",
-                link: "https://portfolio-gules-xi-58.vercel.app/",
-                color: "blue",
-                icon: Users
-            }
-        ];
+    const teamMembers = [
+        {
+            name: "Nevil Anson Dsouza",
+            role: "Team Member",
+            imgSrc: "/nevil-photo.jpg",
+            link: "https://portfolio-gules-xi-58.vercel.app/",
+            color: "neon-violet",
+            icon: Users
+        }
+    ];
 
     return (
-        <div className="min-h-screen bg-black">
-            {/* Hero Section */}
-            <Section className="min-h-[60vh] relative overflow-hidden bg-black flex items-center justify-center pt-32">
-                <div className="absolute inset-0">
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#0ea5e915_1px,transparent_1px),linear-gradient(to_bottom,#0ea5e915_1px,transparent_1px)] bg-[size:3rem_3rem]" />
-                    <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-                    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl" />
-                </div>
+        <div className="min-h-screen bg-obsidian-950 text-white">
+            {/* Background Texture */}
+            <div className="fixed inset-0 bg-noise opacity-[0.03] pointer-events-none" />
 
+            {/* Back Button */}
+            <div className="fixed top-24 left-8 z-50">
+                <Link href="/">
+                    <motion.div 
+                        whileHover={{ x: -5 }}
+                        className="flex items-center gap-2 text-white/40 hover:text-neon-cyan transition-colors font-mono text-xs uppercase tracking-widest"
+                    >
+                        <ArrowLeft size={16} />
+                        <span>Return to Hub</span>
+                    </motion.div>
+                </Link>
+            </div>
+
+            {/* Hero Section */}
+            <Section className="min-h-[60vh] flex items-center justify-center relative pt-40">
                 <Container className="relative z-10">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center max-w-3xl mx-auto"
+                        variants={staggerContainer}
+                        initial="initial"
+                        animate="animate"
+                        className="text-center max-w-4xl mx-auto"
                     >
-                        <div className="inline-block mb-6 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm">
-                            <span className="text-cyan-400 font-mono text-xs uppercase tracking-widest flex items-center gap-2">
-                                <Users size={16} />
-                                Our Team
-                            </span>
-                        </div>
+                        <motion.div variants={fadeIn} className="flex justify-center mb-8">
+                            <div className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md flex items-center gap-2">
+                                <Users size={14} className="text-neon-cyan" />
+                                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/70">Neural Network</span>
+                            </div>
+                        </motion.div>
 
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6 leading-tight">
-                            Meet the{" "}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500">
-                                Innovators
-                            </span>
-                        </h1>
+                        <motion.h1 variants={slideUp} className="text-5xl md:text-8xl font-heading font-bold tracking-tighter-refined mb-8">
+                            THE <span className="shimmer-text">ARCHITECTS</span>
+                        </motion.h1>
 
-                        <p className="text-lg md:text-xl text-neutral-400 leading-relaxed">
-                            A passionate team of developers, designers, and innovators building the future of digital experiences.
-                        </p>
+                        <motion.p variants={fadeIn} className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+                            A decentralized collective of developers and designers pushing the boundaries of digital reality.
+                        </motion.p>
                     </motion.div>
                 </Container>
             </Section>
 
             {/* Founders Section */}
-            <Section className="bg-black relative overflow-hidden py-12">
-                <Container className="relative z-10">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-3xl font-heading font-bold text-white mb-12 text-center"
-                    >
-                        Founders
-                    </motion.h2>
+            <Section className="py-24">
+                <Container>
+                    <div className="flex items-center gap-4 mb-16 justify-center">
+                        <div className="h-[1px] w-12 bg-white/10" />
+                        <h2 className="text-white font-mono text-xs uppercase tracking-[0.4em]">Core nodes</h2>
+                        <div className="h-[1px] w-12 bg-white/10" />
+                    </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto px-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
                         {admins.map((admin, index) => (
                             <motion.div
                                 key={admin.name}
-                                initial={{ opacity: 0, y: 30 }}
+                                initial={{ opacity: 0, y: 50 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.6, delay: index * 0.2 }}
-                                className="flex items-center justify-center"
+                                transition={{ duration: 0.8, delay: index * 0.2 }}
+                                className="flex justify-center"
                             >
-                                <a
-                                    href={admin.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="relative group block w-full max-w-[340px] mx-auto"
-                                >
-                                    <div className="relative p-4">
-                                        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-${admin.color}-500/20 rounded-full blur-[80px] pointer-events-none group-hover:bg-${admin.color}-500/30 transition-colors duration-700`} />
-
-                                        {/* Icon Badge */}
-                                        <div className={`absolute -top-3 left-1/2 -translate-x-1/2 z-30 px-4 py-2 rounded-full border-2 border-${admin.color}-500/50 bg-black group-hover:border-${admin.color}-500 transition-all duration-300`}>
-                                            <admin.icon size={20} className={`text-${admin.color}-400`} />
-                                        </div>
-
+                                <a href={admin.link} target="_blank" className="relative group block w-full max-w-[340px]">
+                                    <div className="relative p-2">
+                                        <div className="absolute inset-0 bg-neon-cyan/5 rounded-[2rem] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                                         <HoloCard
                                             name={admin.name}
                                             role={admin.role}
                                             imgSrc={admin.imgSrc}
-                                            className={`z-10 border-2 border-${admin.color}-500/30 shadow-[0_0_40px_-10px_rgba(6,182,212,0.4)] group-hover:shadow-[0_0_60px_-5px_rgba(6,182,212,0.6)] transition-all duration-500`}
+                                            className="group-hover:border-neon-cyan/50 transition-colors"
                                         />
                                     </div>
                                 </a>
@@ -133,58 +120,31 @@ export default function TeamPage() {
             </Section>
 
             {/* Team Members Section */}
-            <Section className="bg-black relative overflow-hidden py-12">
-                <div className="absolute inset-0">
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#8b5cf615_1px,transparent_1px),linear-gradient(to_bottom,#8b5cf615_1px,transparent_1px)] bg-[size:3rem_3rem]" />
-                </div>
+            <Section className="py-24 border-t border-white/5 bg-white/[0.01]">
+                <Container>
+                    <div className="flex items-center gap-4 mb-16 justify-center">
+                        <div className="h-[1px] w-12 bg-white/10" />
+                        <h2 className="text-white font-mono text-xs uppercase tracking-[0.4em]">Sync nodes</h2>
+                        <div className="h-[1px] w-12 bg-white/10" />
+                    </div>
 
-                <Container className="relative z-10">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-3xl font-heading font-bold text-white mb-12 text-center"
-                    >
-                        Core Team
-                    </motion.h2>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-5xl mx-auto">
                         {teamMembers.map((member, index) => (
                             <motion.div
                                 key={member.name}
-                                initial={{ opacity: 0, y: 30 }}
+                                initial={{ opacity: 0, y: 50 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="flex items-center justify-center"
+                                transition={{ duration: 0.8, delay: index * 0.1 }}
+                                className="flex justify-center"
                             >
-                                <a
-                                    href={member.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="relative group block w-full max-w-[340px] mx-auto"
-                                >
-                                    <div className="relative p-4">
-                                        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-${member.color}-500/20 rounded-full blur-[80px] pointer-events-none group-hover:bg-${member.color}-500/30 transition-colors duration-700`} />
-
-                                        {/* Corner Brackets */}
-                                        <div className={`absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-${member.color}-500/50 transition-all duration-300 group-hover:border-${member.color}-500`} />
-                                        <div className={`absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-${member.color}-500/50 transition-all duration-300 group-hover:border-${member.color}-500`} />
-                                        <div className={`absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-${member.color}-500/50 transition-all duration-300 group-hover:border-${member.color}-500`} />
-                                        <div className={`absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-${member.color}-500/50 transition-all duration-300 group-hover:border-${member.color}-500`} />
-
-                                        {/* Icon Badge */}
-                                        <div className={`absolute -top-3 left-1/2 -translate-x-1/2 z-30 px-4 py-2 rounded-full border-2 border-${member.color}-500/50 bg-black group-hover:border-${member.color}-500 transition-all duration-300`}>
-                                            <member.icon size={20} className={`text-${member.color}-400`} />
-                                        </div>
-
-                                        <HoloCard
-                                            name={member.name}
-                                            role={member.role}
-                                            imgSrc={member.imgSrc}
-                                            className={`z-10 border-2 border-${member.color}-500/30 shadow-[0_0_40px_-10px_rgba(6,182,212,0.4)] group-hover:shadow-[0_0_60px_-5px_rgba(6,182,212,0.6)] transition-all duration-500`}
-                                        />
-                                    </div>
+                                <a href={member.link} target="_blank" className="relative group block w-full max-w-[300px]">
+                                    <HoloCard
+                                        name={member.name}
+                                        role={member.role}
+                                        imgSrc={member.imgSrc}
+                                        className="group-hover:border-neon-violet/50 transition-colors"
+                                    />
                                 </a>
                             </motion.div>
                         ))}

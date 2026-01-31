@@ -92,16 +92,16 @@ function Component({
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
                 className={cn(
-                    "relative z-50 flex h-12 w-12 items-center justify-center rounded-full",
-                    "bg-cyan-500 text-black shadow-[0_0_30px_-5px_rgba(6,182,212,0.6)]",
-                    "hover:bg-cyan-400 transition-colors",
-                    "focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-black",
+                    "relative z-50 flex h-14 w-14 items-center justify-center rounded-full",
+                    "bg-white text-black shadow-[0_0_30px_-5px_rgba(255,255,255,0.4)]",
+                    "hover:scale-110 transition-transform",
+                    "focus:outline-none focus:ring-2 focus:ring-neon-cyan focus:ring-offset-2 focus:ring-offset-black",
                 )}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 0.9 }}
                 aria-expanded={isOpen}
                 aria-haspopup="menu"
             >
-                <motion.div animate={{ rotate: isOpen ? 45 : 0 }} transition={{ duration: 0.2 }}>
+                <motion.div animate={{ rotate: isOpen ? 45 : 0 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
                     {trigger || (
                         <svg
                             width="24"
@@ -109,7 +109,7 @@ function Component({
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
-                            strokeWidth="2"
+                            strokeWidth="3"
                             strokeLinecap="round"
                             strokeLinejoin="round"
                         >
@@ -118,6 +118,10 @@ function Component({
                         </svg>
                     )}
                 </motion.div>
+                {/* Pulse Ring */}
+                {!isOpen && (
+                    <div className="absolute inset-0 rounded-full bg-white/20 animate-ping pointer-events-none" />
+                )}
             </motion.button>
 
             {/* Backdrop */}
@@ -127,7 +131,7 @@ function Component({
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+                        className="fixed inset-0 z-40 bg-obsidian-950/80 backdrop-blur-md"
                         onClick={() => setIsOpen(false)}
                     />
                 )}
@@ -144,29 +148,19 @@ function Component({
                             return (
                                 <motion.button
                                     key={item.id}
-                                    initial={{
-                                        opacity: 0,
-                                        x: 0,
-                                        y: 0,
-                                        scale: 0,
-                                    }}
+                                    initial={{ opacity: 0, x: 0, y: 0, scale: 0 }}
                                     animate={{
                                         opacity: 1,
                                         x: position.x - 24,
                                         y: position.y - 24,
                                         scale: 1,
                                     }}
-                                    exit={{
-                                        opacity: 0,
-                                        x: 0,
-                                        y: 0,
-                                        scale: 0,
-                                    }}
+                                    exit={{ opacity: 0, x: 0, y: 0, scale: 0 }}
                                     transition={{
                                         type: "spring",
                                         stiffness: 400,
                                         damping: 25,
-                                        delay: index * 0.05,
+                                        delay: index * 0.03,
                                     }}
                                     onClick={() => {
                                         item.onClick?.()
@@ -175,27 +169,27 @@ function Component({
                                     }}
                                     onMouseEnter={() => setActiveIndex(index)}
                                     className={cn(
-                                        "absolute flex h-12 w-12 items-center justify-center rounded-full",
-                                        "border border-white/10 bg-black shadow-lg",
-                                        "transition-colors hover:bg-white/10 text-white",
-                                        isActive && "ring-2 ring-cyan-500 bg-white/10",
+                                        "absolute flex h-14 w-14 items-center justify-center rounded-full",
+                                        "border border-white/10 bg-obsidian-900 shadow-2xl",
+                                        "transition-all hover:bg-white/10 text-white",
+                                        isActive && "ring-2 ring-neon-cyan bg-white/10 scale-110",
                                     )}
                                     role="menuitem"
                                     aria-label={item.label}
                                 >
-                                    <div className="text-white">{item.icon}</div>
+                                    <div className={cn("transition-transform", isActive && "scale-110")}>{item.icon}</div>
 
                                     {/* Tooltip */}
                                     <motion.div
-                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        initial={{ opacity: 0, scale: 0.9, x: 10 }}
                                         animate={{
                                             opacity: isActive ? 1 : 0,
                                             scale: isActive ? 1 : 0.9,
+                                            x: isActive ? 0 : 10,
                                         }}
-                                        className="absolute left-full ml-3 whitespace-nowrap rounded-md bg-zinc-900 px-2 py-1 text-xs text-cyan-400 shadow-md border border-white/10"
+                                        className="absolute right-full mr-4 whitespace-nowrap rounded-lg bg-black/80 backdrop-blur-md px-4 py-2 text-xs font-mono uppercase tracking-widest text-neon-cyan shadow-xl border border-white/10"
                                     >
                                         <span>{item.label}</span>
-                                        {item.shortcut && <span className="ml-2 text-neutral-500">{item.shortcut}</span>}
                                     </motion.div>
                                 </motion.button>
                             )

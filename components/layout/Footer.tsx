@@ -1,41 +1,111 @@
 "use client";
 
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, Instagram, Youtube, Gamepad2, Linkedin, Mail } from "lucide-react";
 import siteData from "@/data/site.json";
 import { Container } from "@/components/ui/Container";
+import { motion } from "framer-motion";
 
 export function Footer() {
     const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ 
+            top: 0, 
+            behavior: "smooth"
+        });
     };
 
     return (
-        <footer className="bg-navy-900 border-t border-white/5 py-12 relative overflow-hidden">
+        <footer className="bg-black border-t border-orange-600/20 py-24 relative overflow-hidden">
+            {/* Premium Orange Accent */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-orange-500/50 to-transparent blur-sm" />
+            
             <Container>
-                <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div className="text-center md:text-left">
-                        <h3 className="text-xl font-heading font-bold text-white mb-2">
-                            {siteData.brand.name}
-                        </h3>
-                        <p className="text-neutral-400 text-sm max-w-xs">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                    <div className="col-span-1 lg:col-span-2">
+                        <div className="flex items-center gap-3 mb-6">
+                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-600 p-[1px]">
+                                <div className="w-full h-full bg-black rounded-[7px] flex items-center justify-center">
+                                    <span className="text-white font-heading font-black text-xs">X</span>
+                                </div>
+                            </div>
+                            <span className="font-heading text-2xl font-bold tracking-tighter text-white">
+                                NEXTGEN<span className="text-orange-400">X</span>
+                            </span>
+                        </div>
+                        <p className="text-gray-500 max-w-sm text-lg leading-relaxed">
                             {siteData.brand.description}
                         </p>
                     </div>
 
-                    <div className="flex flex-col items-center md:items-end gap-4">
-                        <button
-                            onClick={scrollToTop}
-                            className="p-3 bg-white/5 hover:bg-neon-cyan hover:text-navy-900 rounded-full transition-all group"
-                            aria-label="Scroll to top"
-                        >
-                            <ArrowUp size={20} className="group-hover:-translate-y-1 transition-transform" />
-                        </button>
-                        <p className="text-neutral-500 text-xs">
-                            © {new Date().getFullYear()} {siteData.brand.name}. All rights reserved.
-                        </p>
+                    <div>
+                        <h4 className="text-white font-mono text-xs uppercase tracking-[0.3em] mb-6">Network</h4>
+                        <ul className="space-y-4">
+                            <li><a href="#" className="text-gray-400 hover:text-orange-400 transition-colors">Architecture</a></li>
+                            <li><a href="#" className="text-gray-400 hover:text-orange-400 transition-colors">Laboratory</a></li>
+                            <li><a href="#" className="text-gray-400 hover:text-orange-400 transition-colors">Neural Grid</a></li>
+                        </ul>
                     </div>
+
+                    <div>
+                        <h4 className="text-white font-mono text-xs uppercase tracking-[0.3em] mb-6">Connect</h4>
+                        <div className="flex gap-4">
+                            {siteData.socials.map((social, index) => (
+                                <SocialLink 
+                                    key={index}
+                                    icon={getSocialIcon(social.icon)}
+                                    href={social.url}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                <div className="flex flex-col md:flex-row items-center justify-between pt-12 border-t border-gray-800/50 gap-6">
+                    <p className="text-gray-600 text-xs font-mono uppercase tracking-widest">
+                        © {new Date().getFullYear()} {siteData.brand.name}. FORGED IN ENERGY.
+                    </p>
+                    
+                    <button
+                        onClick={scrollToTop}
+                        className="group flex items-center gap-3 text-white/40 hover:text-orange-400 transition-colors"
+                    >
+                        <span className="text-[10px] font-mono uppercase tracking-widest">Back to Origin</span>
+                        <div className="p-3 bg-gray-900/50 group-hover:bg-orange-500/10 rounded-full border border-gray-700/50 group-hover:border-orange-500/30 transition-all">
+                            <ArrowUp size={16} className="group-hover:-translate-y-1 transition-transform" />
+                        </div>
+                    </button>
                 </div>
             </Container>
         </footer>
     );
+}
+
+function SocialLink({ icon, href }: { icon: React.ReactNode, href: string }) {
+    return (
+        <a 
+            href={href} 
+            target={href.startsWith('http') ? '_blank' : '_self'}
+            rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            className="w-12 h-12 rounded-xl bg-gray-900/50 border border-gray-700/50 flex items-center justify-center text-white/50 hover:text-orange-400 hover:border-orange-500/30 transition-all group"
+        >
+            <div className="group-hover:scale-110 transition-transform">{icon}</div>
+        </a>
+    );
+}
+
+function getSocialIcon(iconName: string) {
+    const size = 20;
+    switch (iconName) {
+        case 'Instagram':
+            return <Instagram size={size} />;
+        case 'Youtube':
+            return <Youtube size={size} />;
+        case 'Gamepad2':
+            return <Gamepad2 size={size} />;
+        case 'Linkedin':
+            return <Linkedin size={size} />;
+        case 'Mail':
+            return <Mail size={size} />;
+        default:
+            return <Mail size={size} />;
+    }
 }

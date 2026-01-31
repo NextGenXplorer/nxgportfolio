@@ -26,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
-      <body className={cn(inter.variable, spaceGrotesk.variable, "font-sans bg-background text-foreground antialiased overflow-x-hidden max-w-full selection:bg-neon-cyan/20")}>
+    <html lang="en" className="scroll-smooth optimize-animation" suppressHydrationWarning>
+      <body className={cn(inter.variable, spaceGrotesk.variable, "font-sans bg-black text-white antialiased overflow-x-hidden max-w-full selection:bg-yellow-500/20 optimize-animation")}>
         <Navbar />
         {children}
         <Footer />

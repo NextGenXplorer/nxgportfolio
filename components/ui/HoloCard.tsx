@@ -30,11 +30,12 @@ export function HoloCard({
     const mouseYSpring = useSpring(y);
 
     // Calculate rotation based on mouse position (desktop only)
-    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["17.5deg", "-17.5deg"]);
-    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-17.5deg", "17.5deg"]);
+    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["20deg", "-20deg"]);
+    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-20deg", "20deg"]);
 
     // Glare and sheen gradients
-    const glareX = useTransform(mouseXSpring, [-0.5, 0.5], ["0%", "100%"]);
+    const glareX = useTransform(mouseXSpring, [-0.5, 0.5], ["-20%", "120%"]);
+    const glareY = useTransform(mouseYSpring, [-0.5, 0.5], ["-20%", "120%"]);
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!ref.current) return;
@@ -66,58 +67,57 @@ export function HoloCard({
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={handleMouseLeave}
             className={cn(
-                "relative w-full max-w-[280px] md:max-w-[320px] aspect-[2/3] rounded-2xl bg-obsidian-900 border border-white/10 shadow-2xl overflow-hidden cursor-pointer perspective-1000 transform-gpu",
+                "relative w-full max-w-[280px] md:max-w-[320px] aspect-[2/3] rounded-2xl bg-obsidian-900 border border-white/10 shadow-2xl overflow-hidden cursor-pointer perspective-1000 transform-gpu group",
                 className
             )}
             style={{
                 transformStyle: "preserve-3d",
-                // Only apply 3D rotation on desktop (pointer: fine)
-                rotateX: "var(--rotate-x, 0deg)",
-                rotateY: "var(--rotate-y, 0deg)",
+                rotateX,
+                rotateY,
             }}
         >
-            {/* CSS variables for desktop-only 3D effect */}
-            <style jsx>{`
-                @media (pointer: fine) {
-                    div {
-                        --rotate-x: ${rotateX};
-                        --rotate-y: ${rotateY};
-                    }
-                }
-            `}</style>
-
             {/* 1. Profile Image */}
             <div className="absolute inset-0 z-10">
                 <Image
                     src={imgSrc}
                     alt={name}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                     priority
                 />
                 {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/40 to-transparent z-20" />
+                <div className="absolute inset-0 bg-neon-cyan/5 mix-blend-overlay z-20" />
             </div>
 
             {/* 2. Content */}
-            <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 z-30">
-                <h3 className="text-lg md:text-xl font-bold text-white mb-1">{name}</h3>
-                <p className="text-xs md:text-sm text-violet-400 font-medium">{role}</p>
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-30 translate-z-[50px]">
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="space-y-1"
+                >
+                    <h3 className="text-xl md:text-2xl font-heading font-bold text-white tracking-tight">{name}</h3>
+                    <p className="text-xs md:text-sm text-neon-cyan font-mono uppercase tracking-widest">{role}</p>
+                </motion.div>
             </div>
 
             {/* 3. Holographic Glare (desktop only) */}
             <motion.div
-                className="absolute inset-0 z-20 pointer-events-none hidden md:block"
-                animate={{ opacity: isHovered ? 0.4 : 0 }}
+                className="absolute inset-0 z-20 pointer-events-none hidden md:block mix-blend-overlay"
+                animate={{ opacity: isHovered ? 0.6 : 0 }}
                 style={{
-                    background: "linear-gradient(125deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,1) 45%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%)",
-                    backgroundSize: "250% 250%",
-                    backgroundPositionX: glareX,
+                    background: `radial-gradient(circle at ${glareX} ${glareY}, rgba(255,255,255,0.8) 0%, transparent 60%)`,
                 }}
             />
 
-            {/* 4. Border Glow */}
-            <div className="absolute inset-0 border-2 border-white/10 rounded-2xl z-40 pointer-events-none" />
+            {/* 4. Scanning Line */}
+            <div className="absolute inset-0 z-20 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="w-full h-[2px] bg-neon-cyan/30 absolute top-0 animate-scan shadow-[0_0_15px_rgba(0,243,255,0.5)]" />
+            </div>
+
+            {/* 5. Border Glow */}
+            <div className="absolute inset-0 border border-white/10 rounded-2xl z-40 pointer-events-none group-hover:border-neon-cyan/50 transition-colors duration-500" />
 
         </motion.div>
     );

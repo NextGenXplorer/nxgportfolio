@@ -12,20 +12,42 @@ const config: Config = {
                 background: "var(--background)",
                 foreground: "var(--foreground)",
                 obsidian: {
-                    950: "#020202", // True black
-                    900: "#050505", // Deepest gray
-                    800: "#0a0a0a", // Surface
-                    700: "#121212", // Secondary surface
+                    950: "#020202", // Deep Space
+                    900: "#080808", // Obsidian
+                    800: "#0d0d0d", // Graphite
+                    700: "#1a1a1a", // Charcoal
                 },
-                violet: {
-                    900: "#2e1065",
-                    500: "#8b5cf6",
-                    400: "#a78bfa",
+                "neon-cyan": {
+                    DEFAULT: "#00f3ff",
+                    50: "#e0feff",
+                    100: "#b3fdff",
+                    200: "#80fbff",
+                    300: "#4df9ff",
+                    400: "#1af7ff",
+                    500: "#00f3ff",
+                    600: "#00c2cc",
+                    700: "#009299",
+                    800: "#006166",
+                    900: "#003133",
                 },
-                cyan: {
-                    500: "#06b6d4",
-                    400: "#22d3ee",
+                "neon-violet": {
+                    DEFAULT: "#bc13fe",
+                    50: "#f8e6ff",
+                    100: "#ecbfff",
+                    200: "#e091ff",
+                    300: "#d361ff",
+                    400: "#c733ff",
+                    500: "#bc13fe",
+                    600: "#960fcc",
+                    700: "#710b99",
+                    800: "#4b0766",
+                    900: "#260433",
                 },
+            },
+            letterSpacing: {
+                "tighter-refined": "-0.04em",
+                "tight-refined": "-0.02em",
+                "widest-refined": "0.15em",
             },
             fontFamily: {
                 sans: ["var(--font-inter)"],
